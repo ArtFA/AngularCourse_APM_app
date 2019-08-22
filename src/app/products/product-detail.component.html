@@ -1,0 +1,58 @@
+<div class="card" *ngIf="product">
+  <div class="card-header">
+    {{ pageTitle + " - " + product.productName }}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div class="row" style="margin-bottom: 7px">
+          <div class="col-md-5">Name:</div>
+          <div class="col-auto">{{ product.productName }}</div>
+        </div>
+        <div class="row" style="margin-bottom: 7px">
+          <div class="col-md-5">Code:</div>
+          <div class="col-auto">
+            {{ product.productCode | lowercase | convertToSpaces: "-" }}
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 7px">
+          <div class="col-md-5">Description:</div>
+          <div class="col-auto">{{ product.description }}</div>
+        </div>
+        <div class="row" style="margin-bottom: 7px">
+          <div class="col-md-5">Availability:</div>
+          <div class="col-auto">{{ product.releaseDate }}</div>
+        </div>
+        <div class="row" style="margin-bottom: 7px">
+          <div class="col-md-5">Price:</div>
+          <div class="col-auto">
+            {{ product.price | currency: "USD":"symbol":"1.2-2"  }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">5 Star Rating:</div>
+          <div class="col-auto">
+            <pm-star [rating]="product.starRating"></pm-star>
+          </div>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <img
+          [src]="product.imageUrl"
+          [title]="product.productName"
+          [style.max-width.px]="200"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button
+      class="btn btn-outline-secundary"
+      (click)="onBack()"
+      style="width: 80px"
+    >
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+  </div>
+</div>
